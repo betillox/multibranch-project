@@ -7,7 +7,7 @@ pipeline {
 
         stage('Compilacion') {
             steps {
-               sh 'mvn -DskipTests clean install package'
+               sh 'mvn -D skipTests clean install package'
             }
         }
 
@@ -30,15 +30,15 @@ pipeline {
 
         stage('Tag docker image') {
             steps {
-                sh 'docker image tag spring-webapp mmadrigal/spring-webapp:latest'
+                sh 'docker image tag spring-webapp betillo/spring-webapp:latest'
             }
         }
 
         stage('Upload docker image') {
             steps {
                 withCredentials([string(credentialsId: 'dockerpwd-id', variable: 'dockerpwd')]) {
-                    sh 'docker login -u mmadrigal -p ${dockerpwd}'
-                    sh 'docker image push mmadrigal/spring-webapp:latest'
+                    sh 'docker login -u betillo -p ${dockerpwd}'
+                    sh 'docker image push betillo/spring-webapp:latest'
                 }
             }
         }
