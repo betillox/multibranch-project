@@ -36,11 +36,12 @@ pipeline {
 
         stage('Upload docker image') {
             steps {
-                withCredentials([string(credentialsId: 'docker-pwd-id', variable: 'docker-pwd-id')]) {
-                    sh 'docker login -u betillo -p ${docker-pwd-id}'
-                    sh 'docker image push betillo/spring-webapp:latest'
-                }
-            }
-        }
+        container('docker') {
+          sh 'docker login -u betllo -p Guitarra123.'
+      	  sh 'docker image push betillo/spring-webapp:latest'  
+	    }	
+	}
+        
+	}
     }
 }
