@@ -36,7 +36,7 @@ pipeline {
 
         stage('Upload docker image') {
             steps {
-                withCredentials([string(credentialsId: 'docker-pwd-id', variable: 'docker-credentials')]) {
+                withCredentials([string(credentialsId: 'docker-pwd-id', variable: 'docker-pwd-id')]) {
                     sh 'docker login -u betillo -p ${docker-pwd-id}'
                     sh 'docker image push betillo/spring-webapp:latest'
                 }
