@@ -37,10 +37,9 @@ pipeline {
         stage('Upload docker image') {
             steps {
           	sh 'docker login -u betllo -p Guitarra123.'
-      	  	sh 'docker image push betillo/spring-webapp:latest'  
-	    }	
-	}
-        
-      }
+      	  	sh 'docker image push betillo/spring-webapp:latest'
+              }
+            }
+        }
     }
-}
+}  
